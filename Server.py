@@ -4,7 +4,11 @@ import os
 ###need the output of ls /dev/cu.usbmodem*
 #ArdunioLocation = ????
 
+#command for a Mac Computer
 retvalue = os.system("ls /dev/cu.usbmodem*")
+# command for a Raspberry Pi Computer
+retvalue = os.system("ls /dev/ttyAMC*")
+
 print retvalue
 
 
