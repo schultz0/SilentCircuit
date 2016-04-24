@@ -8,35 +8,21 @@ import platform
 if platform.system() == 'Darwin':
     computerSystem = 'Mac'
 elif platform.system() == 'Linux':
-    computerSystem = 'Linux'
+    computerSystem = 'Raspi'
 else:
     computerSystem = 'Unknown'
-
-print computerSystem
-
-###need the output of ls /dev/cu.usbmodem*
-#ArdunioLocation = ????
-
-##command for a Mac Computer
-#retvalue = os.system("ls /dev/cu.usbmodem*")
-## command for a Raspberry Pi Computer
-#
-#print retvalue
-#
-#retvalue = os.system("ls /dev/ttyAMC*")
-#
-#print retvalue
+print "I hope you are using a ", computerSystem
 
 
-#
-#
-#import os
-#p = os.popen('command',"r")
-#while 1:
-#    line = p.readline()
-#    if not line: break
-#    print line
-#
+if computerSystem == 'Mac':
+    command = "ls /dev/cu.usbmodem*"
+elif computerSystem == 'Raspi':
+    command = "ls /dev/ttyAMC*"
+
+p = os.popen(command)
+location = p.read()
+
+print location
 
 
 #ser = serial.Serial(ArdunioLocation, 115200)
