@@ -3,11 +3,11 @@ import os
 import platform
 
 
-## This lets us know if we are running the program on a Mac or Linux Computer. 
+## This lets us know if we are running the program on a Mac or Linux Computer.
 #print platform.system()
 if platform.system() == 'Darwin':
     computerSystem = 'Mac'
-elif platform.system() == 'Darwin':
+elif platform.system() == 'Linux':
     computerSystem = 'Linux'
 else:
     computerSystem = 'Unknown'
