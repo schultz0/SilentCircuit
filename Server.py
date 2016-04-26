@@ -2,7 +2,7 @@ import serial
 import os
 import platform
 import glob
-
+import sys
 
 ## This lets us know if we are running the program on a Mac or Linux Computer.
 #print platform.system()
@@ -21,7 +21,13 @@ elif computerSystem == 'Raspi':
     typeFile = "/dev/ttyAMC*"
 
 ardunioLocation = glob.glob(typeFile)
-print ardunioLocation[0]
+if not ardunioLocation:
+    print "I do not see an Arduino"
+    sys.exit()
+else:
+    print "Your Arduino is at",
+    print ardunioLocation[0]
+
 
 ser = serial.Serial(ardunioLocation[0], 115200)
 while True:
