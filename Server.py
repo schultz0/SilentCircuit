@@ -1,6 +1,7 @@
 import serial
 import os
 import platform
+import glob
 
 
 ## This lets us know if we are running the program on a Mac or Linux Computer.
@@ -11,20 +12,17 @@ elif platform.system() == 'Linux':
     computerSystem = 'Raspi'
 else:
     computerSystem = 'Unknown'
-print "I hope you are using a ", computerSystem
+print "I hope you are using a", computerSystem
 
 
 if computerSystem == 'Mac':
-    command = "ls /dev/cu.usbmodem*"
+    typeFile = "/dev/cu.usbmodem*"
 elif computerSystem == 'Raspi':
-    command = "ls /dev/ttyAMC*"
+    typeFile = "/dev/ttyAMC*"
 
-p = os.popen(command)
-location = p.read()
+ardunioLocation = glob.glob(typeFile)
+print ardunioLocation[0]
 
-print location
-
-
-#ser = serial.Serial(ArdunioLocation, 115200)
-#while True:
-#	print ser.readline(),
+ser = serial.Serial(ardunioLocation[0], 115200)
+while True:
+	print ser.readline(),
